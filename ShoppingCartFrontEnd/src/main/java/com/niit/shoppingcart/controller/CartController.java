@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +20,15 @@ import com.niit.shoppingcart.domain.Cart;
 @Controller
 public class CartController {
 	
+	Logger log = LoggerFactory.getLogger(CartController.class);
+	
 	@Autowired
 	private CartDAO cartDAO;
 	
 	@Autowired  private Cart cart;
 	@Autowired private HttpSession httpSession;
 	
-	@PostMapping("product/cart/add")
+	@PostMapping("/product/cart/add")
 	public ModelAndView addToCart(@RequestParam String productName,
 			@RequestParam int price, @RequestParam String quantity)
 	
@@ -54,13 +59,16 @@ public class CartController {
 	
 	
 	//get my cart details
-	@GetMapping("/mycart/")
+	@GetMapping("/mycart")
 	public ModelAndView  getMyCartDetails()
 	{
+		log.debug("Starting of the method getMyCartDetails");
 		ModelAndView mv = new ModelAndView("home");
+		mv.addObject("isUserClickedMyCart", true);
 		//it will return all the products which are added to cart
 		//??
 		String loggedInUserID = (String)httpSession.getAttribute("loggedInUserID");
+		log.info("Logged in user id : " + loggedInUserID);
 		if(loggedInUserID==null)
 		{
 		  mv.addObject("errorMessage", "Please login to see your cart details");
@@ -68,6 +76,8 @@ public class CartController {
 		}
 		 List<Cart> cartList = cartDAO.list(loggedInUserID);
 		 mv.addObject("cartList", cartList);
+		 log.debug("not of products in cart " + cartList.size());
+		 log.debug("Ending of the method getMyCartDetails");
 		 return mv;
 	}
 	
@@ -79,6 +89,6 @@ public class CartController {
 	
 	
 	
-	
 
 }
+

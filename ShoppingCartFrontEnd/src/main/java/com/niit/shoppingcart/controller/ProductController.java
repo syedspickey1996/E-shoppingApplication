@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.ProductDAO;
@@ -49,21 +51,38 @@ public class ProductController {
 	private static String rootPath = System.getProperty("catalina.home");
 
 
-	// http://localhost:8080/shoppingcart/product/get/cate_001
-	@GetMapping("/product/get/")
-	public ModelAndView getProduct(@RequestParam String id) 
+/*	@GetMapping("/product/get/{id}")
+	public ModelAndView getProduct(@PathVariable("id") String id)
 	{
-		// based on id, fetch the details from productDAO
 		product = productDAO.get(id);
-		// navigate to home page
-		ModelAndView mv = new ModelAndView("home");
+		
+		ModelAndView mv = new ModelAndView("redirect:/");
 		mv.addObject("selectedproduct", product);
 		mv.addObject("isUserSelectedProduct", true);
 		
-		mv.addObject("selectedProductImage" , rootPath + File.separator +imageDirectory
-				+File.separator +id +"");
+		mv.addObject("selectedProductImage", 
+				rootPath +File.separator +imageDirectory +File.separator +id + ".PNG");
+		
 		return mv;
-	}
+	}*/
+	
+	//first selected product and second selected product
+	//are appending in the URL - and hence getting 404
+	//http://localhost:8080/shoppingcart/product/get/prd001  - 1st
+	//http://localhost:8080/shoppingcart/product/get/prd001/product/get/prd003  - 1st
+	// Get select product details
+	@GetMapping("/product/get/{id}")
+		public ModelAndView getSelectedProduct(@PathVariable("id") String id, RedirectAttributes redirectAttributes) {
+			
+			ModelAndView mv = new ModelAndView("redirect:/");
+			redirectAttributes.addFlashAttribute("selectedProduct",  productDAO.get(id));
+			redirectAttributes.addFlashAttribute("isUserSelectedProduct",  true);
+			redirectAttributes.addFlashAttribute("selectedProductImage", rootPath +File.separator +imageDirectory +File.separator +id + ".PNG");
+			return mv;
+
+		}
+	
+	
 
 	@PostMapping("/product/save/")
 	public ModelAndView saveProduct(@RequestParam("id") String id,
@@ -95,7 +114,7 @@ public class ProductController {
 			}
 			else
 			{
-				mv.addObject("uploadMessage", "Could not upload image");
+				mv.addObject("uploadMessage", "Coulod not upload image");
 			}
 		} else {
 			mv.addObject("productErrorMessage", "Could not able to create product.  please contact admin");

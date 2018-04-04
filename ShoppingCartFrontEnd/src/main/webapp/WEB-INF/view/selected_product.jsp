@@ -8,16 +8,16 @@
 </head>
 <body>
 
-<form action= "cart/add" method = "post">
+<form action="cart/add" method = "post">
 <img alt="" src="${selectedProductImage}"> <br>
-<input type="text" name="productName" value ="${selectedproduct.name}">
-<input type="text" name="price" value ="${selectedproduct.price}">
-<input type="text" name="quantity"> <br>
+<%-- <img alt="" src="resources/images/ShoppingCartImages/${selectedproduct.id}.PNG"> --%>
+product name: <input type="text" disabled="disabled" name="productName" value ="${selectedProduct.name}"> <br>
+price <input type="text" disabled="disabled" name="price" value="${selectedProduct.price}"> <br>
+Quantity : <input type="text" name="quantity" > <br>
 
+Description : ${selectedProduct.description} <br>
 
-Description : ${selectedproduct.decription} <br>
-
-<input type="submit" value="Add To Cart">
+<input type="submit" value="Add to Cart">
 </form>
 
 </body>
