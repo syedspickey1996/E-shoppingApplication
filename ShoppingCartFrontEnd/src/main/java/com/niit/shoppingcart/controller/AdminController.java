@@ -39,13 +39,10 @@ public class AdminController {
 	private Supplier supplier;
 	
 	@Autowired
-	private Product product;
-	
-	
-	
-	
+	private Product product;	
 
-	@Autowired HttpSession httpSession;
+	@Autowired 
+	HttpSession httpSession;
 	
 	@GetMapping("/managecategories")
 	public ModelAndView admincClickedCategories()
@@ -59,12 +56,6 @@ public class AdminController {
 		mv.addObject("errorMessage", "Please login to do this operation");
 		return mv;
 	}
-		
-		
-		
-		
-		//2 - the already logged in
-		//  check what is role of the user
 	
 	Boolean isAdmin =(Boolean)  httpSession.getAttribute("isAdmin");
 		//if the role of user is not admin
@@ -73,16 +64,7 @@ public class AdminController {
 	 {
 		 mv.addObject("errorMessage", "You are not autheroized to do this operations.");
 		 return mv;
-	 }
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	 }		
 		log.debug("starting of the method admincClickedCategories");
 		
 		mv.addObject("isAdminClickedManageCategories", true);
@@ -114,7 +96,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView("home");
 		mv.addObject("isAdminClickedManageProducts", true);
 		//we suppsed to fetch all categories and suppliers
-		//and set it to http sesion.
+		//and set it to http session.
 		 List<Category> categories = categoryDAO.list();
 		 List<Supplier> suppliers = supplierDAO.list();
 		 List<Product> products = productDAO.list();
