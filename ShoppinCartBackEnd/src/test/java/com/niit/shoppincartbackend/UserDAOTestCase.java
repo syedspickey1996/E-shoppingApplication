@@ -43,10 +43,11 @@ public class UserDAOTestCase {
 	@Test
 	public void saveUserTestCase()
 	{
-		user.setEmailId("syed196@gmail.com");
+		user = new User();
+		user.setEmailID("sha96@gmail.com");
 		user.setMobile("9789988976");
-		user.setName("syed_shahabuddin");
-		user.setPwd("syed@1996");		
+		user.setName("A.syed_shahabuddin");
+		user.setPwd("syed1996");		
 		
 		boolean status = userDAO.save(user);		
 		assertEquals("save user test case",true,status);
@@ -55,9 +56,10 @@ public class UserDAOTestCase {
 	@Test
 	public void updateUserTestCase()
 	{
-		user = new User();
-		user.setEmailId("syed16@gmail.com");
-		user.setMobile("9840734157");
+		user.setEmailID("syed@gmail.com");
+		user.setMobile("9789988976");
+		user.setName("A.syed_shahabuddin");
+		user.setPwd("syed1996");		
 		
 		boolean status=userDAO.update(user);
 		assertEquals("update test case",true,status );
@@ -66,7 +68,7 @@ public class UserDAOTestCase {
 	@Test
 	public void getUserSuccessTestCase()
 	{
-		user = userDAO.get("syed05@gmail.com");
+		user = userDAO.get("syed96@gmail.com");
 		assertNotNull("get user test case", user);
 	}
 	
@@ -95,12 +97,12 @@ public class UserDAOTestCase {
 	public void getAllUsersTestCase()
 	{
 		List<User> users=userDAO.list();
-		assertEquals("get all users",3,users.size());
+		assertEquals("get all users",5,users.size());
 	}
 	
 	public void validateCredentialsTestCase()
 	{
-		user = userDAO.validate("syedshaha1996@gmail.com", "syed@1996");
+		user = userDAO.validate("syedshaha1996@gmail.com", "syed1996");
 		assertNotNull("validate test case",user);
 	}
 

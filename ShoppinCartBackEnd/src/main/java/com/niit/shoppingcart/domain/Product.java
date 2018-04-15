@@ -1,6 +1,5 @@
 package com.niit.shoppingcart.domain;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,19 +17,19 @@ public class Product {
 	private String id;
 	private String name;
 	private String description;
-
-	private int price;
 	
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
+	private Integer price;
 
 	private String categoryId;
 	private String supplierId;
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "categoryId", updatable = false, insertable = false, nullable = false)

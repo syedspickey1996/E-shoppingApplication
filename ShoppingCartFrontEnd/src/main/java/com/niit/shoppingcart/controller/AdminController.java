@@ -79,13 +79,13 @@ public class AdminController {
 	@GetMapping("/managesuppliers")
 	public ModelAndView admincClickedSupplier()
 	{
-		log.debug("starting of the method admincClickedSupplier");
+		log.debug("starting of the method admincClickedSuppliers");
 		ModelAndView mv = new ModelAndView("home");
 		mv.addObject("isAdminClickedManageSuppliers", true);
 		
 		List<Supplier> suppliers =  supplierDAO.list();
 		httpSession.setAttribute("suppliers", suppliers);
-		log.debug("ending of the method admincClickedSupplier");
+		log.debug("ending of the method admincClickedSuppliers");
 		return mv;
 	}
 	

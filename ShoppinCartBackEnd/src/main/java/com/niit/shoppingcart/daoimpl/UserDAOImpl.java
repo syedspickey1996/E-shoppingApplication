@@ -96,7 +96,7 @@ public class UserDAOImpl implements UserDAO {
 	public User validate(String emailID, String password) {
 		log.debug("Starting of the validate method");
 		log.info(" user " + emailID + "trying to login");
-	user = (User)sessionFactory.getCurrentSession().
+	User user = (User)sessionFactory.getCurrentSession().
 		createCriteria(User.class).
 		add(Restrictions.eq("emailID",emailID )).
 		add(Restrictions.eq("pwd",password)).

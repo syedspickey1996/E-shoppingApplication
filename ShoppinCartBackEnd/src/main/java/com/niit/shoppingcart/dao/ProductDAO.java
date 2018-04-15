@@ -18,6 +18,8 @@ public interface ProductDAO {
 	public boolean delete(String emailID);
 	
 	public List<Product> list();
+
+	public List<Product> search(String searchString);
 	
 	/*public Product validate(String emailID,String password);
 */

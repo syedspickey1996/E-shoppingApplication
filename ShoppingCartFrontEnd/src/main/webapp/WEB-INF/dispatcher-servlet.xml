@@ -36,7 +36,7 @@
 		<!-- setting maximum upload size -->
 
 
-		<beans:property value="100000" name="maxUploadSize" />
+		<beans:property value="10000000" name="maxUploadSize" />
 
 	</beans:bean>
 

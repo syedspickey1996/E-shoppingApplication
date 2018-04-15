@@ -86,6 +86,11 @@ public class CartDAOImpl implements CartDAO {
 				.add(Restrictions.eqOrIsNull("emailID", emailID)).list();
 	}
 
+	public boolean update(String emailID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 }

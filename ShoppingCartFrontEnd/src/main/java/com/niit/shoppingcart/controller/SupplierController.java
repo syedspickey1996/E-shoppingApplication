@@ -1,6 +1,5 @@
 package com.niit.shoppingcart.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -43,10 +42,12 @@ public class SupplierController {
 	public ModelAndView getSupplier(@RequestParam String id) {
 		// based on id, fetch the details from categoryDAO
 		supplier = supplierDAO.get(id);
+
 		// navigate to home page
 		ModelAndView mv = new ModelAndView("home");
 		mv.addObject("supplier", supplier);
 		return mv;
+
 	}*/
 
 	@PostMapping("/supplier/save/")

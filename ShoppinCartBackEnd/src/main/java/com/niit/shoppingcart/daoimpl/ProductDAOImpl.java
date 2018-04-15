@@ -82,6 +82,11 @@ public class ProductDAOImpl implements ProductDAO {
 	return	sessionFactory.getCurrentSession().createQuery("from Product").list();
 	}
 
+	public List<Product> search(String searchString) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

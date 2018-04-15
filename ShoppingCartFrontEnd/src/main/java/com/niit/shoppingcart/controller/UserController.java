@@ -51,7 +51,7 @@ public class UserController {
 		
 		user= userDAO.validate(username, password);
 		
-		if (user ==null)
+		if (user==null)
 		{
 			mv.addObject("errorMessage", "Invalid credentials, pl try agin.");
 			
@@ -61,11 +61,11 @@ public class UserController {
 			//valid credentials.
 			//mv.addObject("welcomeMessage", "Welcome Mr./Ms " + user.getName());
 			httpSession.setAttribute("welcomeMessage", "Welcome Mr./Ms " + user.getName());
-			httpSession.setAttribute("loggedInUserID", user.getEmailId());
+			httpSession.setAttribute("loggedInUserID", user.getEmailID());
 			httpSession.setAttribute("isLoggedIn",true);
 			//fetch how amy products are added to the cart.
 			//this number add to httpSession.
-			List<Cart> carts = cartDAO.list(user.getEmailId());
+			List<Cart> carts = cartDAO.list(user.getEmailID());
 			httpSession.setAttribute("size", carts.size());
 			
 			

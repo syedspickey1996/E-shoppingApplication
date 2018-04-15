@@ -2,23 +2,54 @@ package com.niit.shoppingcart.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.niit.shoppingcart.domain.Cart;
 
-@Service
+
+//DAO -> Data Access Object
 public interface CartDAO {
+	
+	//declare the methods.
+	
+	//create new cart
 	
 	public boolean save(Cart cart);
 	
+	
+	//update the existing cart
+	
 	public boolean update(Cart cart);
 	
-	public Cart get(String Id);
+	//related to order 
 	
-	public boolean delete(String Id);
+	public boolean update(String emailID);
 	
-	public List<Cart> list(String emailID);
 	
-	/*public Cart validate(String emailID,String password);*/
+	//get the cart details
+	
+	public   Cart     get(String id);
+	
+	
+	//delete the cart
+	
+	public   boolean    delete(String id);
+	
+	//to get all the carts add by a particular user
+	public List<Cart>   list(String emailID);
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
