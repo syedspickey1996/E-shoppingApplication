@@ -63,7 +63,7 @@ System.out.println("saveSupplier method is calling");
 		if (supplierDAO.save(supplier)) {
 			mv.addObject("supplierSuccessMessage", "The supplier created successfully");
 		} else {
-			mv.addObject("supplierErrorMessage", "Coulc not able to create supplier.  please contact admin");
+			mv.addObject("supplierErrorMessage", "Could not able to create supplier.  please contact admin");
 		}
 		return mv;
 

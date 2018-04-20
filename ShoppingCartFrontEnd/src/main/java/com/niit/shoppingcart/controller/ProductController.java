@@ -264,8 +264,6 @@ public class ProductController {
 	//private static String rootPath = System.getProperty("catalina.home");
     private static String rootPath = "C:\\Users\\syeds\\eclipse-workspace\\ShoppingCartFrontEnd\\src\\main\\webapp\\resources\\images";
 
-
-
 /*	@GetMapping("/product/get/{id}")
 	public ModelAndView getProduct(@PathVariable("id") String id)
 	{
@@ -293,6 +291,7 @@ public class ProductController {
 			redirectAttributes.addFlashAttribute("selectedProduct",  productDAO.get(id));
 			redirectAttributes.addFlashAttribute("isUserSelectedProduct",  true);
 		//	redirectAttributes.addFlashAttribute("productID", rootPath +File.separator +imageDirectory +File.separator +id + ".PNG");
+			
 			return mv;
 
 		}

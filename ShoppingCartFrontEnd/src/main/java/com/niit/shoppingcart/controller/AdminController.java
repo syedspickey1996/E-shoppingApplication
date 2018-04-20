@@ -52,7 +52,7 @@ public class AdminController {
 	String loggedInUserID= (String)httpSession.getAttribute("loggedInUserID");
 	if(loggedInUserID==null)
 	{
-		//if not logged, "Please loging to do this opertaion
+		//if not logged, "Please logging to do this operation
 		mv.addObject("errorMessage", "Please login to do this operation");
 		return mv;
 	}
